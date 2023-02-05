@@ -1,5 +1,5 @@
 import fs from "fs";
-import Jimp from 'Jimp';
+import Jimp from 'jimp';
 import axios from 'axios';
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally

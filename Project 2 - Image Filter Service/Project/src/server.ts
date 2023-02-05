@@ -35,8 +35,8 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
       const regex: RegExp = new RegExp(expression);
 
       // Get Image URL from Query
-      const { image_url }: { image_url: string } = req.query;
-
+      const image_url: string = (req.query as any).image_url;
+      
       // validate if the image_url exists and well formed
       if (!image_url && (!image_url.match(regex))) {
             res.status(400).send({ message: "image url is missing or invalid" });
@@ -44,8 +44,8 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
       }
 
       // validate the type of the image
-      const url = new URL(image_url);
-      const strImageFile = path.basename(url.pathname);
+      const url:URL = new URL(image_url);
+      const strImageFile: string = path.basename(url.pathname);
       const arrAllowedTypes = [".jpeg",".jpg", ".png", ".bmp", ".tiff"];
       if ( !arrAllowedTypes.includes(path.extname(strImageFile))){
             res.status(400).send({ message: `Type '${path.extname(strImageFile)}' not supported` });
