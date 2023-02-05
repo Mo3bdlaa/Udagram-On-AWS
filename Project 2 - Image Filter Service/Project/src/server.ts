@@ -55,7 +55,7 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
       const promiseImage: Promise<string> = filterImageFromURL(image_url);
 
       promiseImage.then(image => {
-            res.sendFile(image, () => {
+            res.status(200).sendFile(image, () => {
                   const arrImagesToBeDeleted: Array<string> = new Array(image);
                   deleteLocalFiles(arrImagesToBeDeleted);
             }); 
