@@ -60,7 +60,7 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
                   deleteLocalFiles(arrImagesToBeDeleted);
             }); 
       }).catch(error => {
-            res.status(500).send({ message: `Image not found in provided URL : ${error}` });
+            res.status(422).send({ message: `Image not found in provided URL : ${error}` });
             return;
       })
 
